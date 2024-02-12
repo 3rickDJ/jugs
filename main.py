@@ -27,7 +27,7 @@ def is_goal(path, goal_amount):
 
     print("Checking if the gaol is achieved...")
 
-    return path[-1][0] == goal_amount 
+    return path[-1][1] == goal_amount 
 
 def been_there(node, check_dict):
     """
