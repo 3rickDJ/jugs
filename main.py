@@ -1,17 +1,12 @@
 import collections
 
-
 def main():
-    """
-    main function
-    """
 
     nodo_inicial = [[0, 0]]
     jarras = [3,4]
     objetivo = 2
     visitados = {}
-    enProfundidad = False
-    busqueda(nodo_inicial, jarras, objetivo, visitados, enProfundidad)
+    busqueda(nodo_inicial, jarras, objetivo, visitados)
 
 def obtenerIndice(node):
     # la llave unica de un estado para ponerla en el diccinario y que no colisiones
@@ -92,27 +87,23 @@ def siguientes(jarras, camino, visitado):
         print(siguientes_nodos)
     return resultado
 
-
-
-
-
-def busqueda(starting_node, jugs, goal_amount, check_dict, is_depth):
+def busqueda(nodo_inicial, jarras, cantidad_objetivo, visitado):
     objetivo = []
     completado = False
 
     cola = collections.deque()
-    cola.appendleft(starting_node)
+    cola.appendleft(nodo_inicial)
 
     while len(cola) != 0:
         path = cola.popleft()
-        check_dict[obtenerIndice(path[-1])] = True
-        if esObjetivo(path, goal_amount):
+        visitado[obtenerIndice(path[-1])] = True
+        if esObjetivo(path, cantidad_objetivo):
             completado = True
             objetivo = path
             break
 
-        next_moves = siguientes(jugs, path, check_dict)
-        for i in next_moves:
+        siguientes_movimientos = siguientes(jarras, path, visitado)
+        for i in siguientes_movimientos:
             cola.append(i)
 
     if completado:
