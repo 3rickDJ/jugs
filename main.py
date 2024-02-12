@@ -97,27 +97,27 @@ def siguientes(jarras, camino, visitado):
 
 
 def busqueda(starting_node, jugs, goal_amount, check_dict, is_depth):
-    goal = []
-    accomplished = False
+    objetivo = []
+    completado = False
 
-    q = collections.deque()
-    q.appendleft(starting_node)
+    cola = collections.deque()
+    cola.appendleft(starting_node)
 
-    while len(q) != 0:
-        path = q.popleft()
+    while len(cola) != 0:
+        path = cola.popleft()
         check_dict[obtenerIndice(path[-1])] = True
         if esObjetivo(path, goal_amount):
-            accomplished = True
-            goal = path
+            completado = True
+            objetivo = path
             break
 
         next_moves = siguientes(jugs, path, check_dict)
         for i in next_moves:
-            q.append(i)
+            cola.append(i)
 
-    if accomplished:
+    if completado:
         print("Solución 🔥😍🥑👌🏼")
-        print(goal)
+        print(objetivo)
     else:
         print("No se encontró una solución 😭")
 
