@@ -14,11 +14,7 @@ def main():
     search(starting_node, jugs, goal_amount, check_dict, is_depth)
 
 def get_index(node):
-    """
-    returns a key value for a given node
-
-    node: a list of two integers representing current state of the jugs
-    """
+    # la llave unica de un estado para ponerla en el diccinario y que no colisiones
     return pow(7, node[0]) * pow(5, node[1])
 
 def is_goal(path, goal_amount):
