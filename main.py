@@ -13,7 +13,7 @@ def obtenerIndice(node):
     return pow(7, node[0]) * pow(5, node[1])
 
 def esObjetivo(camino, objetivo):
-    return camino[-1][1] == objetivo 
+    return camino[-1][1] == objetivo
 
 def esRevisado(node, visitado):
     # revisar si ya añadimos ese nodo a la frontera
@@ -96,6 +96,7 @@ def busqueda(nodo_inicial, jarras, cantidad_objetivo, visitado):
 
     while len(cola) != 0:
         path = cola.popleft()
+        print(path)
         visitado[obtenerIndice(path[-1])] = True
         if esObjetivo(path, cantidad_objetivo):
             completado = True
